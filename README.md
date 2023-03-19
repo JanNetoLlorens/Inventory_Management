@@ -10,7 +10,7 @@ Here I will some categories in which you can organise most of the games inventor
 
 This one is very easy to implement into the game because the player normally has one universal inventory where it stashes all the items it founds during the gameplay, an inventory share among the party members. The slots are infinite, everytime you add a new item to the inventory a new slot is created, ennabling the player to stash an innumerable amount of items. However there is a fixed number of each, typically 99 but it can be 50, 100, 1000.
 
-![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/99inv.jpg) ![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/pokemonInv.png)
+![Octocat](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/99inv.jpg) ![Octocat](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/pokemonInv.png)
 
 PROS:
 - Low design risk
@@ -32,7 +32,7 @@ This system gained a great degree of popularity during the last decade, due to t
 
 * If you add this system to your game is mandatory to be able to search items by weight.
 
-![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/Fallout3.jpg)
+![Octocat](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/Fallout3.jpg)
 
 PROS:
 - Resource management
@@ -51,12 +51,12 @@ The items of the inventory instead of being displayed as text are shown ase imag
 
 * The first tryes to represent the size of the items making them occupy more or less slots which makes the inventory more interactive because the player has to solve a little puzzle to fit the maximum amount of items as it is possible. 
 
-![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/ResidentEvilIV.jpg)
+![Octocat](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/ResidentEvilIV.jpg)
 
 
 * The second all the items just occupy one slot.
 
-![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/LostArkInv.png)
+![Octocat](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/LostArkInv.png)
 
 PROS:
 - Visual
