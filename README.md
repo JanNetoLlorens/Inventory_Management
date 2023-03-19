@@ -21,7 +21,9 @@ CONS:
 - Realism
 - Non-visual
 
-[[https://raw.githubusercontent.com/The-Century-Scratch/Project-2-Breaking-Cats/main/Wiki/Assets/TheCenturyScratchLogo.png | width = 600px]]
+![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/pokemonInv.png)
+
+![[https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/pokemonInv.png | width = 600px]]
 
 ## The Weighted Inventory
 
