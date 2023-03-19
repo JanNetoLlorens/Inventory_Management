@@ -25,4 +25,6 @@ CONS:
 - Non-visual
 
 ### The Weighted Inventory
-
+'''c++
+char kiko = "laXupa"
+'''
