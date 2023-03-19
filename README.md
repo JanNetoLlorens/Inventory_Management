@@ -51,9 +51,12 @@ The items of the inventory instead of being displayed as text are shown ase imag
 
 * The first tryes to represent the size of the items making them occupy more or less slots which makes the inventory more interactive because the player has to solve a little puzzle to fit the maximum amount of items as it is possible. 
 
+![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/ResidentEvilIV.jpg)
+
+
 * The second all the items just occupy one slot.
 
-![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/Fallout3.jpg)
+![Branching](https://github.com/JanNetoLlorens/Inventory_Management/blob/main/WebpageAssets/LostArkInv.png)
 
 PROS:
 - Visual
