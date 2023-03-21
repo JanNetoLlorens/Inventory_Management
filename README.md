@@ -116,6 +116,57 @@ void Inventory::AddItem(Entity* item)
 		}
 ```
 
-## TODO 3
-## TODO 4
-## TODO 5
+## TODO 3 - Draw Items
+
+Whith this function we will be able to display visually the items in the inventory. Depending of what item we have in each slot we will have to draw the corresponding texture. To do that we will have to find a way to be able to recognise what appears in the slot or if there is nothing. As in the 2 TODO a loop will be required.
+
+* to do that the "int id" of the slot structure will be very useful.
+
+```c++
+void Inventory::DrawItems()
+{
+	for (int i = 0; i < MAX_INVENTORY_SLOTS; ++i)
+	{
+		SDL_Rect r { 0,0,32,32 };
+		SDL_Rect r2{ 0,0,38,39 };
+		//Draw Item Texture
+		if (slots[i].id != 0)
+		{
+			app->render->DrawTexture(selectedSlotTexture, slots[currentSlotId].bounds.x + invPos.x, slots[currentSlotId].bounds.y + invPos.y, &r2, false);
+			app->render->DrawTexture(slots[i].texture, slots[i].bounds.x+invPos.x, slots[i].bounds.y+invPos.y, &r, false);
+			//app->render->DrawText("1", slots[i].bounds.x+25, slots[i].bounds.y+25, slots[i].bounds.w, slots[i].bounds.h, { 255,255,255 });
+		}
+	}
+}
+```
+
+## TODO 4 - Move Through the Inventory
+
+We will have to find a way to change from on slot to another by using W, A, S, D. To notice if we are really changing of slot we will add a slot marker. We will have to add limits so that we don't go outside the inventory slots.
+
+* Outside the InventorySlot struct there is a variable which we will need to use "currentSlotId".
+
+```c++
+void Inventory::MoveThroughInv()
+{
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
+		if (currentSlotId > 5)
+			currentSlotId -= 6;
+
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+		if (currentSlotId < 24)
+			currentSlotId += 6;
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+		if (currentSlotId != 0 && currentSlotId != 6 && currentSlotId != 12 && currentSlotId != 18 && currentSlotId != 24)
+				currentSlotId -= 1;
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+		if (currentSlotId != 5 && currentSlotId != 11 && currentSlotId != 17 && currentSlotId != 23 && currentSlotId != 29)
+			currentSlotId += 1;
+}
+```
+
+## TODO 5 - Delete Items
+
+We have to add a function to release space from the inventory in case we don't have enough to take another item. A function which will work similarly would be a function which drops the 
