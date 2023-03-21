@@ -69,6 +69,7 @@ bool Inventory::Start()
 	slots[29].bounds = { 230, 184, 32, 32 };
 
 	invPos.x = 500; invPos.y = 200;
+
 	img = app->tex->Load("Assets/Textures/inventory.png");
 
 	currentSlotId = 0;
@@ -89,19 +90,17 @@ bool Inventory::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN && app->scene->items.start != nullptr)
 	{
-		AddItem(app->scene->items.start->data);
-		app->scene->items.start->data->Disable();
+		//TODO 2: Use AddItem
 	}
 	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && app->scene->items.start->next != nullptr)
 	{
-		AddItem(app->scene->items.start->next->data);
-		app->scene->items.start->data->Disable();
+		//TODO 2: Use AddItem
 	}
 
-	MoveThroughInv();
+	//TODO 4: Use MoveThroughInv
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-		ChangeItemPos();
+		//TODO 6: Use MoveItemPos
 
 
 	DeleteItem();
@@ -118,7 +117,8 @@ bool Inventory::PostUpdate()
 		ret = false;
 
 	app->render->DrawTexture(img, invPos.x, invPos.y);
-	DrawItems();
+
+	//TODO 3: Use DrawItems
 
 	return ret;
 }
@@ -133,105 +133,37 @@ bool Inventory::CleanUp()
 
 void Inventory::AddItem(Entity* item)
 {
-	for (int i = 0; i < MAX_INVENTORY_SLOTS; ++i)
-	{
-		if (slots[MAX_INVENTORY_SLOTS].id == item->id && slots[i].itemsAmount <= ITEM_STACK)
-		{
-			slots[i].itemsAmount++;
-			slots[i].state = SlotState::UNSELECTED;
-			break;
-		}
-		else if (slots[i].id == 0)
-		{
-			slots[i].id = item->id;
-			slots[i].filled = true;
-			slots[i].itemsAmount = 1;
-			slots[i].texture = item->texture;
-			slots[i].state = SlotState::UNSELECTED;
-			break;
-		}
-	}
+	//TODO 2: Create a loop to iterate over the slots
+
+		//detect the empty slots and pass the information to the it (check the struct)
 }
 
 void Inventory::DrawItems()
 {
-	for (int i = 0; i < MAX_INVENTORY_SLOTS; ++i)
-	{
-		SDL_Rect r { 0,0,32,32 };
-		SDL_Rect r2{ 0,0,38,39 };
-		//Draw Item Texture
-		if (slots[i].id != 0)
-		{
-			app->render->DrawTexture(selectedSlotTexture, slots[currentSlotId].bounds.x + invPos.x, slots[currentSlotId].bounds.y + invPos.y, &r2, false);
-			app->render->DrawTexture(slots[i].texture, slots[i].bounds.x+invPos.x, slots[i].bounds.y+invPos.y, &r, false);
-			//app->render->DrawText("1", slots[i].bounds.x+25, slots[i].bounds.y+25, slots[i].bounds.w, slots[i].bounds.h, { 255,255,255 });
-		}
-	}
+
+	//TODO 3: Iterate over the slots and use DrawTexture to display the item in the inventory (check that the slots are not empty)
+	
+		//The sections for the textures
+		SDL_Rect itemSect { 0,0,32,32 };
+		SDL_Rect slotMarkerSect{ 0,0,38,39 };
+	
 }
 
 void Inventory::MoveThroughInv()
 {
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
-		if (currentSlotId > 5)
-			currentSlotId -= 6;
-
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
-		if (currentSlotId < 24)
-			currentSlotId += 6;
-
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
-		if (currentSlotId != 0 && currentSlotId != 6 && currentSlotId != 12 && currentSlotId != 18 && currentSlotId != 24)
-				currentSlotId -= 1;
-
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
-		if (currentSlotId != 5 && currentSlotId != 11 && currentSlotId != 17 && currentSlotId != 23 && currentSlotId != 29)
-			currentSlotId += 1;
-}
-
-void Inventory::ChangeItemPos()
-{
-
-	if (slots[currentSlotId].filled && slots[currentSlotId].state == SlotState::UNSELECTED && !changingSlot)
-	{
-		changingSlot = true;
-		slots[currentSlotId].state = SlotState::SELECTED;
-		saveCopyIdSlot = currentSlotId;
-		saveCopy.id = slots[currentSlotId].id;
-		saveCopy.itemsAmount = slots[currentSlotId].itemsAmount;
-		saveCopy.texture = slots[currentSlotId].texture;
-	}
-
-
-	if(!slots[currentSlotId].filled && changingSlot)
-	{
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !slots[currentSlotId].filled)
-		{
-			//Delete the slot where you had the item
-			slots[saveCopyIdSlot].filled = false;
-			slots[saveCopyIdSlot].id = 0;
-			slots[saveCopyIdSlot].itemsAmount = 0;
-			slots[saveCopyIdSlot].state = SlotState::UNSELECTED;
-			slots[saveCopyIdSlot].texture = nullptr;
-			changingSlot = false;
-
-			//Change the item position
-			slots[currentSlotId].filled = true;
-			slots[currentSlotId].id = saveCopy.id;
-			slots[currentSlotId].itemsAmount = saveCopy.itemsAmount;
-			slots[currentSlotId].texture = saveCopy.texture;
-			slots[currentSlotId].state = SlotState::UNSELECTED;
-		}
-	}	
+	//TODO 4: By clicking WASD move throught the slots (check currentSlotId and apply limits)
 }
 
 void Inventory::DeleteItem()
 {
-	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
-	{
-		slots[currentSlotId].filled = false;
-		slots[currentSlotId].id = 0;
-		slots[currentSlotId].itemsAmount = 0;
-		slots[currentSlotId].state = SlotState::UNSELECTED;
-		slots[currentSlotId].texture = nullptr;
-	}
+	//TODO 5: By clicking K delete and item from a slot (reset the information of the corresponding slot)
+}
+
+void Inventory::ChangeItemPos()
+{
+	//TODO 6: In this function you must be able to copy a filled slot and print it on an empty slot (the conditions are the trick here)
+
+		//Copy the slot if filled (check saveCopy and saveCopyIdSlot)
+		
+		//Print the information into the empty slot and delete the first slot
 }
