@@ -184,3 +184,46 @@ void Inventory::DeleteItem()
 	}
 }
 ```
+
+## TODO 6
+
+In this function we have to create a way of moving one slot to another one. To be able to do that we will copy a filled slot and then print it in an empty one. We will have to be careful with the conditions because if we messed up we can make infinite copies of one object. 
+* Use SaveCopy, saveCopyIdSlot to store the slot information and bool filled, SlotState and changingSlot for the conditions.
+* After the copy print the information in the empty slot and delete the first one.
+```c++
+void Inventory::ChangeItemPos()
+{
+
+	if (slots[currentSlotId].filled && slots[currentSlotId].state == SlotState::UNSELECTED && !changingSlot)
+	{
+		changingSlot = true;
+		slots[currentSlotId].state = SlotState::SELECTED;
+		saveCopyIdSlot = currentSlotId;
+		saveCopy.id = slots[currentSlotId].id;
+		saveCopy.itemsAmount = slots[currentSlotId].itemsAmount;
+		saveCopy.texture = slots[currentSlotId].texture;
+	}
+
+
+	if(!slots[currentSlotId].filled && changingSlot)
+	{
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !slots[currentSlotId].filled)
+		{
+			//Delete the slot where you had the item
+			slots[saveCopyIdSlot].filled = false;
+			slots[saveCopyIdSlot].id = 0;
+			slots[saveCopyIdSlot].itemsAmount = 0;
+			slots[saveCopyIdSlot].state = SlotState::UNSELECTED;
+			slots[saveCopyIdSlot].texture = nullptr;
+			changingSlot = false;
+
+			//Change the item position
+			slots[currentSlotId].filled = true;
+			slots[currentSlotId].id = saveCopy.id;
+			slots[currentSlotId].itemsAmount = saveCopy.itemsAmount;
+			slots[currentSlotId].texture = saveCopy.texture;
+			slots[currentSlotId].state = SlotState::UNSELECTED;
+		}
+	}	
+}
+```
