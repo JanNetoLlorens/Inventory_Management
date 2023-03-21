@@ -169,4 +169,18 @@ void Inventory::MoveThroughInv()
 
 ## TODO 5 - Delete Items
 
-We have to add a function to release space from the inventory in case we don't have enough to take another item. A function which will work similarly would be a function which drops the 
+We have to add a function to release space from the inventory in case we don't have enough to take another item. A function which will work similarly would be a function which drops the item to the scene, the item will still have to be deleted from the inventory but it have to spawn in the scene. By clicking a button you have to be able to delete an object, basically it mean reseting the information stored in that slot to leave it empty.
+
+```c++
+void Inventory::DeleteItem()
+{
+	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN)
+	{
+		slots[currentSlotId].filled = false;
+		slots[currentSlotId].id = 0;
+		slots[currentSlotId].itemsAmount = 0;
+		slots[currentSlotId].state = SlotState::UNSELECTED;
+		slots[currentSlotId].texture = nullptr;
+	}
+}
+```
