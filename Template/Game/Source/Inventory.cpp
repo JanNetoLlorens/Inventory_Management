@@ -188,7 +188,7 @@ void Inventory::MoveThroughInv()
 			currentSlotId += 1;
 }
 
-bool Inventory::ChangeItemPos()
+void Inventory::ChangeItemPos()
 {
 
 	if (slots[currentSlotId].filled && slots[currentSlotId].state == SlotState::UNSELECTED && !changingSlot)
@@ -221,8 +221,6 @@ bool Inventory::ChangeItemPos()
 			slots[currentSlotId].texture = saveCopy.texture;
 			slots[currentSlotId].state = SlotState::UNSELECTED;
 		}
-		else
-			return false;
 	}	
 }
 

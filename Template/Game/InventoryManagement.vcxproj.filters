@@ -138,9 +138,6 @@
     <ClInclude Include="Source\Inventory.h">
       <Filter>Source\Application\Game\GameModules</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Item.h">
-      <Filter>Source\Application\Game\Entities\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Axe.h">
       <Filter>Source\Application\Game\Entities\Items</Filter>
     </ClInclude>

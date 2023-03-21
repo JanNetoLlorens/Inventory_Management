@@ -12,9 +12,7 @@ enum class SlotState
 	NONE = 0,
 	UNSELECTED,
 	SELECTED,
-	FOCUSED,
 	USE,
-	DELETE
 };
 
 
@@ -25,18 +23,7 @@ struct InventorySlot
 	int itemsAmount;
 	bool filled;
 	int id;
-	SlotState state;
-
-	/*bool operator==(InventorySlot& i) const
-	{
-		return (i.bounds.x == bounds.x && i.bounds.y == bounds.y && i.bounds.w == bounds.w && i.bounds.h == bounds.h &&
-			i.item->objectType == item->objectType && i.itemsAmount == itemsAmount && i.filled == filled);
-	}
-	bool operator!=(InventorySlot& i) const
-	{
-		return (i.bounds.x != bounds.x || i.bounds.y != bounds.y || i.bounds.w != bounds.w || i.bounds.h != bounds.h ||
-			i.item->objectType != item->objectType || i.itemsAmount != itemsAmount || i.filled != filled);
-	}*/
+	SlotState state;	
 };
 
 struct SDL_Texture;
@@ -66,8 +53,8 @@ public:
 	void AddItem(Entity* item);
 	void DrawItems();
 	void MoveThroughInv();
-	bool ChangeItemPos();
 	void DeleteItem();
+	void ChangeItemPos();
 	
 public:
 
