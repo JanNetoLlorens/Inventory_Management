@@ -189,7 +189,7 @@ void Inventory::DeleteItem()
 }
 ```
 
-## TODO 6
+## TODO 6 - Change Item Position
 
 In this function we have to create a way of moving one slot to another one. To be able to do that we will copy a filled slot and then print it in an empty one. We will have to be careful with the conditions because if we messed up we can make infinite copies of one object. 
 * Use SaveCopy, saveCopyIdSlot to store the slot information and bool filled, SlotState and changingSlot for the conditions.
