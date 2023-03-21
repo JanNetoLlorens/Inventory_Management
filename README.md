@@ -113,7 +113,6 @@ void Inventory::AddItem(Entity* item)
 		}
 	}
 }
-		}
 ```
 
 ## TODO 3 - Draw Items
@@ -182,5 +181,47 @@ void Inventory::DeleteItem()
 		slots[currentSlotId].state = SlotState::UNSELECTED;
 		slots[currentSlotId].texture = nullptr;
 	}
+}
+```
+
+## TODO 6 - Move Items
+
+For the last function we will have to create a way to move one item just to an empty space. Whith the first click of the space you must check if the slot is empty and if not copy the information stored to print it in another one then with the second click of the space bar print that information into the new slot and delete it from the first one. Be careful to check that the conditions are right because it may enable infinite copies of one item.
+
+```c++
+void Inventory::ChangeItemPos()
+{
+
+	if (slots[currentSlotId].filled && slots[currentSlotId].state == SlotState::UNSELECTED && !changingSlot)
+	{
+		changingSlot = true;
+		slots[currentSlotId].state = SlotState::SELECTED;
+		saveCopyIdSlot = currentSlotId;
+		saveCopy.id = slots[currentSlotId].id;
+		saveCopy.itemsAmount = slots[currentSlotId].itemsAmount;
+		saveCopy.texture = slots[currentSlotId].texture;
+	}
+
+
+	if(!slots[currentSlotId].filled && changingSlot)
+	{
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !slots[currentSlotId].filled)
+		{
+			//Delete the slot where you had the item
+			slots[saveCopyIdSlot].filled = false;
+			slots[saveCopyIdSlot].id = 0;
+			slots[saveCopyIdSlot].itemsAmount = 0;
+			slots[saveCopyIdSlot].state = SlotState::UNSELECTED;
+			slots[saveCopyIdSlot].texture = nullptr;
+			changingSlot = false;
+
+			//Change the item position
+			slots[currentSlotId].filled = true;
+			slots[currentSlotId].id = saveCopy.id;
+			slots[currentSlotId].itemsAmount = saveCopy.itemsAmount;
+			slots[currentSlotId].texture = saveCopy.texture;
+			slots[currentSlotId].state = SlotState::UNSELECTED;
+		}
+	}	
 }
 ```
