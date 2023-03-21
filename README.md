@@ -67,3 +67,26 @@ CONS:
 - Arrangement
 - Size balancing
 - Stash
+
+#Handout
+
+## TODO 1
+
+Too start whith the handout i will make a brief explanation of the code I prepared for it, basically what I added to the Project II template. Check and make sure to understand the basics before advancing to the next TODO.
+
+* Two items added. These inherit from the parent class entity and and are managed by the module EntityManager. The entities are added into a list inside the EntityManager and this is the one in charge of calling the loop functions of the entities or destroying them. There is just one little change in the items which is that I added an id which will be useful when when to pass the item from being diplayed into the map to the inventory. By pressing "q" and "e" a ring or an axe will spawn in the scene.
+
+* Inventory module added. It works as a scene when the player wants to open the inventory by clicking the "i" the module will be set as Active and it will appear the inventory.
+
+ * SlotState enum class added. It will be necessary to manage different states of the slots for example when moving objects, there  we will differentiate between selected and unselected.
+ 
+ * InventorySlot struct added. This struct basically defines a slot.
+ 
+ * Five functions to manage the inventory added. This ones aren't donte yet because they will be the principal content of the handout.
+ 
+ 
+
+## TODO 2
+## TODO 3
+## TODO 4
+## TODO 5
