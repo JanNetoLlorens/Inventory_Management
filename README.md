@@ -1,3 +1,7 @@
+## Link to the Presentation
+
+[Link to the presentation](https://docs.google.com/presentation/d/1Xn4yaQkcfGut4O5_Wk8ZEM0TXJdEdhAJOft5CHNzca8/edit?usp=sharing)
+
 # Introduction
 
 In loads of games the player has to collect differents items, materials through out the story of the videogame so there appears the problem. Where do the player put those items? The inventory which is the place where you will put everything you collect. Here appears the inventory management which basically are the different tools the player will have to organise the different items. Depending on the game a good management of the inventory will be more or less important, for example in all kinds of RPGs having a well thought system is necessary because most time of the game the player will be managing items recieved from quests, killing enemies, crafting...
