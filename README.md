@@ -85,6 +85,8 @@ Inside the inventory:
  * InventorySlot struct added. This struct basically defines a slot.
  
  * Five functions to manage the inventory added. This ones aren't donte yet because they will be the principal content of the handout.
+
+The following TODOs will be organized by the different functions I have created to manage the inventory.
  
 
 ## TODO 2 - Add Item
