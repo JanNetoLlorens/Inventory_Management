@@ -70,7 +70,7 @@ CONS:
 
 #Handout
 
-## TODO 1
+## TODO 1 - Get in Touch
 
 Too start whith the handout i will make a brief explanation of the code I prepared for it, basically what I added to the Project II template. Check and make sure to understand the basics before advancing to the next TODO.
 
@@ -78,15 +78,44 @@ Too start whith the handout i will make a brief explanation of the code I prepar
 
 * Inventory module added. It works as a scene when the player wants to open the inventory by clicking the "i" the module will be set as Active and it will appear the inventory.
 
+Inside the inventory:
+
  * SlotState enum class added. It will be necessary to manage different states of the slots for example when moving objects, there  we will differentiate between selected and unselected.
  
  * InventorySlot struct added. This struct basically defines a slot.
  
  * Five functions to manage the inventory added. This ones aren't donte yet because they will be the principal content of the handout.
  
- 
 
-## TODO 2
+## TODO 2 - Add Item
+
+This function is the portal from the map to your inventory, to sum up it passes the information from an entity displayed in the map to a slot in the inventory. Because the inventory isn't just one slot it will have to be implemented a loop which detects if a square is empty or not and then pass the required information to the corresponding slot.
+
+```c++
+void Inventory::AddItem(Entity* item)
+{
+	for (int i = 0; i < MAX_INVENTORY_SLOTS; ++i)
+	{
+		if (slots[MAX_INVENTORY_SLOTS].id == item->id && slots[i].itemsAmount <= ITEM_STACK)
+		{
+			slots[i].itemsAmount++;
+			slots[i].state = SlotState::UNSELECTED;
+			break;
+		}
+		else if (slots[i].id == 0)
+		{
+			slots[i].id = item->id;
+			slots[i].filled = true;
+			slots[i].itemsAmount = 1;
+			slots[i].texture = item->texture;
+			slots[i].state = SlotState::UNSELECTED;
+			break;
+		}
+	}
+}
+		}
+```
+
 ## TODO 3
 ## TODO 4
 ## TODO 5
