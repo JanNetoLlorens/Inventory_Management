@@ -85,13 +85,11 @@ Inside the inventory:
  * InventorySlot struct added. This struct basically defines a slot.
  
  * Five functions to manage the inventory added. This ones aren't donte yet because they will be the principal content of the handout.
-
-The following TODOs will be organized by the different functions I have created to manage the inventory.
  
 
 ## TODO 2 - Add Item
 
-This function is the portal from the map to your inventory, to sum up it passes the information from an entity displayed in the map to a slot in the inventory. Because the inventory isn't just one slot it will have to be implemented a loop which detects if a square is empty or not and then pass the required information to the corresponding slot.
+This function is the portal from the map to your inventory, to sum up it passes the information from an entity displayed in the scene to a slot in the inventory. Because the inventory isn't just one slot it will have to be implemented a loop which detects if a slot is empty or not and then pass the required information to the corresponding slot.
 
 ```c++
 void Inventory::AddItem(Entity* item)
@@ -115,6 +113,7 @@ void Inventory::AddItem(Entity* item)
 		}
 	}
 }
+		}
 ```
 
 ## TODO 3 - Draw Items
@@ -183,47 +182,5 @@ void Inventory::DeleteItem()
 		slots[currentSlotId].state = SlotState::UNSELECTED;
 		slots[currentSlotId].texture = nullptr;
 	}
-}
-```
-
-## TODO 6 - Move Items
-
-For the last function we will have to create a way to move one item just to an empty space. Whith the first click of the space you must check if the slot is empty and if not copy the information stored to print it in another one then with the second click of the space bar print that information into the new slot and delete it from the first one. Be careful to check that the conditions are right because it may enable infinite copies of one item.
-
-```c++
-void Inventory::ChangeItemPos()
-{
-
-	if (slots[currentSlotId].filled && slots[currentSlotId].state == SlotState::UNSELECTED && !changingSlot)
-	{
-		changingSlot = true;
-		slots[currentSlotId].state = SlotState::SELECTED;
-		saveCopyIdSlot = currentSlotId;
-		saveCopy.id = slots[currentSlotId].id;
-		saveCopy.itemsAmount = slots[currentSlotId].itemsAmount;
-		saveCopy.texture = slots[currentSlotId].texture;
-	}
-
-
-	if(!slots[currentSlotId].filled && changingSlot)
-	{
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !slots[currentSlotId].filled)
-		{
-			//Delete the slot where you had the item
-			slots[saveCopyIdSlot].filled = false;
-			slots[saveCopyIdSlot].id = 0;
-			slots[saveCopyIdSlot].itemsAmount = 0;
-			slots[saveCopyIdSlot].state = SlotState::UNSELECTED;
-			slots[saveCopyIdSlot].texture = nullptr;
-			changingSlot = false;
-
-			//Change the item position
-			slots[currentSlotId].filled = true;
-			slots[currentSlotId].id = saveCopy.id;
-			slots[currentSlotId].itemsAmount = saveCopy.itemsAmount;
-			slots[currentSlotId].texture = saveCopy.texture;
-			slots[currentSlotId].state = SlotState::UNSELECTED;
-		}
-	}	
 }
 ```
