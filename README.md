@@ -231,4 +231,11 @@ void Inventory::ChangeItemPos()
 	}	
 }
 ```
-[https://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-preliminary-steps--gamedev-14725](https://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-preliminary-steps--gamedev-14725)
+
+# References
+
+[Theory](https://gamedevelopment.tutsplus.com/articles/designing-an-rpg-inventory-system-that-fits-preliminary-steps--gamedev-14725)
+
+[Rpg unity video](https://youtu.be/v4Xqj0sanyU)
+
+Hunter odissey, a game of another yeat was a great help to plan what I had to do.
